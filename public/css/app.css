@@ -1,0 +1,93 @@
+body, html {
+  padding: 0;
+  margin: 0; }
+
+.container {
+  font-family: 'PT Sans', sans-serif;
+  margin: 0 auto; }
+  @media only screen and (max-width: 600px) {
+    .container {
+      width: 600px; } }
+
+.header {
+  background-color: #F7E8E8;
+  height: 50px;
+  padding: 0 15px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 30px; }
+  .header__title {
+    margin: 0;
+    text-align: center;
+    line-height: 50px;
+    color: #444; }
+  .header__page-title {
+    margin: 0;
+    line-height: 50px;
+    color: #444;
+    display: inline-block;
+    float: left; }
+
+.login-form {
+  width: 500px;
+  margin: 100px auto 0 auto;
+  border: 1px solid #ddd;
+  padding: 30px 15px 15px 15px;
+  border-radius: 3px; }
+
+.subscriber-create {
+  width: 500px;
+  margin: 100px auto 0 auto;
+  border: 1px solid #ddd;
+  padding: 30px 15px 15px 15px;
+  border-radius: 3px; }
+
+.form__row {
+  margin-bottom: 15px; }
+
+.form__label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold; }
+
+.form__input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 8px;
+  font-size: 12px;
+  outline: none; }
+
+.form__button {
+  border: none;
+  color: #57799D;
+  background-color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 12px; }
+  .form__button:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border-radius: 3px; }
+
+.menu {
+  float: right; }
+  .menu__items {
+    padding: 0;
+    margin: 0;
+    list-style: none; }
+  .menu__item {
+    line-height: 50px;
+    float: left;
+    margin-right: 15px; }
+    .menu__item:last-child {
+      margin-right: 0; }
+  .menu__link {
+    color: #57799D;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none; }
+    .menu__link:hover {
+      color: #45607c; }
+
+/*# sourceMappingURL=app.css.map */

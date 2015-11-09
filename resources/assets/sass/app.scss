@@ -1,2 +1,50 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+body, html {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  font-family: 'PT Sans', sans-serif;
+  margin: 0 auto;
+  @media only screen and(max-width: 600px) {
+    width: 600px;
+  }
 
+}
+.header {
+  background-color: #F7E8E8;
+  height: 50px;
+  padding: 0 15px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 30px;
+  &__title {
+    margin: 0;
+    text-align: center;
+    line-height: 50px;
+    color: #444;
+  }
+  &__page-title {
+    margin: 0;
+    line-height: 50px;
+    color: #444;
+    display: inline-block;
+    float: left;
+  }
+}
+
+.login-form {
+  width: 500px;
+  margin: 100px auto 0 auto;
+  border: 1px solid #ddd;
+  padding: 30px 15px 15px 15px;
+  border-radius: 3px;
+}
+.subscriber-create {
+  width: 500px;
+  margin: 100px auto 0 auto;
+  border: 1px solid #ddd;
+  padding: 30px 15px 15px 15px;
+  border-radius: 3px;
+}
+
+@import "form";
+@import "menu";

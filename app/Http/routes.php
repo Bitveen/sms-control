@@ -1,16 +1,12 @@
 <?php
+Route::get('/', 'AuthController@index');
+Route::get('login', 'AuthController@form');
+Route::post('login', 'AuthController@authenticate');
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+Route::get('/schedule', 'ScheduleController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/subscribers', 'SubscribersController@index');
+Route::post('/subscribers', 'SubscribersController@create');
+Route::get('/subscribers/create', 'SubscribersController@showForm');
+
+Route::get('/api/messages', 'ApiController@messages');

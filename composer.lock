@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5c6026b96e6fa11a641b51a6ba976f5e",
-    "content-hash": "5bd58fd976f1ee3e9611bc37c006ec46",
+    "hash": "e30024491a0b9226139347f63f88b1c7",
+    "content-hash": "873b63ea981a891297239cd1c3c61843",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1719,6 +1719,45 @@
                 "environment"
             ],
             "time": "2015-05-30 15:59:26"
+        },
+        {
+            "name": "zjango/laracurl",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zjango/Laracurl.git",
+                "reference": "b3af1344e12df63a061d2c3692e745c2ed0735cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zjango/Laracurl/zipball/b3af1344e12df63a061d2c3692e745c2ed0735cd",
+                "reference": "b3af1344e12df63a061d2c3692e745c2ed0735cd",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/Zjango"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zjango",
+                    "email": "zjango@icloud.com"
+                }
+            ],
+            "description": "Laravel 5.0 Package Wrapper For Andreas Lutro's OOP cURL Class",
+            "keywords": [
+                "Laracurl",
+                "curl",
+                "framework",
+                "laravel"
+            ],
+            "time": "2015-05-15 01:52:23"
         }
     ],
     "packages-dev": [

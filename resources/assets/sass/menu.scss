@@ -1,0 +1,26 @@
+.menu {
+  float: right;
+  &__items {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  &__item {
+    line-height: 50px;
+    float: left;
+    margin-right: 15px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    color: #57799D;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    &:hover {
+      color: darken(#57799D, 10%);
+    }
+  }
+}
