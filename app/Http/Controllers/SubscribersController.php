@@ -44,6 +44,27 @@ class SubscribersController extends Controller
         return view('subscribers.create');
     }
 
+    public function view($id)
+    {
+        $subscriber = Subscriber::get($id);
+        return view('subscribers.view')->with('subscriber', $subscriber);
+    }
+
+    public function update($id, Request $request)
+    {
+        $firstName = $request->input('firstName');
+        $lastName = $request->input('lastName');
+        $middleName = $request->input('middleName');
+        $phoneNumber = $request->input('phoneNumber');
+
+        if (!Subscriber::update($id, $firstName, $lastName, $middleName, $phoneNumber)) {
+            Session::flash('subscriberUpdateError', 'Ошибка при обновлении информации о пользователе.');
+            return redirect()->back();
+        }
+        Session::flash('subscriberUpdateSuccess', 'Сохранено.');
+        return redirect('/subscribers');
+    }
+
 
 
 

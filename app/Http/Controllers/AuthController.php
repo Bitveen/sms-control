@@ -6,15 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use Session;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class AuthController extends Controller
 {
     public function index()
     {
         if (Auth::check()) {
-            redirect('/schedule');
+            return redirect('/schedule');
         } else {
-            redirect('/login');
+            return redirect('/login');
         }
     }
 
@@ -28,8 +29,22 @@ class AuthController extends Controller
         if (Auth::attempt($request->only('login', 'password'))) {
             return redirect('/schedule');
         } else {
-            Session::flash('loginError', 'Не правильно указан логин или пароль.');
+            Session::flash('loginError', 'Неправильно указан логин или пароль.');
             return redirect()->back();
+        }
+
+    }
+
+    public function logout()
+    {
+        try {
+            if (!Auth::check()) {
+                abort(404);
+            }
+            Auth::logout();
+            return redirect('/login');
+        } catch (HttpException $e) {
+            return view('404');
         }
 
 

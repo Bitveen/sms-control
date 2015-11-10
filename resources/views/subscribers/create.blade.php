@@ -3,12 +3,8 @@
 @section('page_title', 'Создание нового пользователя')
 
 @section('content')
-    <header class="header">
-        <h3 class="header__page-title">Создание нового пользователя</h3>
-        @include('nav')
-    </header>
-
-    <div class="subscriber-create">
+    @include('nav', ['title' => 'Создание нового пользователя'])
+    <div class="subscriber-create container">
         <form action="/subscribers" method="post" class="form">
             <div class="form__row">
                 <label for="" class="form__label">Фамилия пользователя</label>

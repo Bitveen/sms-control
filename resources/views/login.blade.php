@@ -6,7 +6,8 @@
     <header class="header">
         <h3 class="header__title">Вход</h3>
     </header>
-    <div class="login-form">
+
+    <div class="login-form container">
         <form action="/login" method="post" class="form">
             <div class="form__row">
                 <label class="form__label" for="">Логин</label>
