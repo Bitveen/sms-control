@@ -7,6 +7,9 @@ body, html {
 .vm-container {
   @include container-fixed(0);
 }
+.container {
+  position: relative;
+}
 .header {
   background-color: #F7E8E8;
   height: 50px;
@@ -37,6 +40,12 @@ body, html {
   margin: 30px auto 0 auto;
   border: 1px solid #ddd;
   padding: 30px 15px 15px 15px;
+}
+
+.canvas {
+  position: relative;
+  display: block;
+  margin: 0 auto;
 }
 
 @import "form";

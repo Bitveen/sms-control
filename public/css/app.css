@@ -5767,6 +5767,9 @@ body, html {
   .vm-container:after {
     clear: both; }
 
+.container {
+  position: relative; }
+
 .header {
   background-color: #F7E8E8;
   height: 50px;
@@ -5802,6 +5805,11 @@ body, html {
   margin: 30px auto 0 auto;
   border: 1px solid #ddd;
   padding: 30px 15px 15px 15px; }
+
+.canvas {
+  position: relative;
+  display: block;
+  margin: 0 auto; }
 
 .form__row {
   margin-bottom: 15px; }

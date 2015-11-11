@@ -5,8 +5,10 @@
     <title>@yield('page_title')</title>
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/bootstrap-datepicker3.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="/js/vendor/bootstrap.js"></script>
+
 </head>
 <body>
     <div class="vm-container">

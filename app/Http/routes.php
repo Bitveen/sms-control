@@ -6,6 +6,7 @@ Route::get('logout', 'AuthController@logout');
 
 
 Route::get('/schedule', 'ScheduleController@index');
+Route::post('/schedule', 'ScheduleController@draw');
 
 Route::get('/subscribers', 'SubscribersController@index');
 Route::post('/subscribers', 'SubscribersController@create');
