@@ -22,13 +22,9 @@
                                 @endforeach
                             </select>
                         </div>
-
                         <div class="form-group">
-                            <div class="input-group input-daterange">
-                                <input type="text" name="startDate" class="form-control">
-                                <span class="input-group-addon">по</span>
-                                <input type="text" name="endDate" class="form-control">
-                            </div>
+                            <label for="dayToShow">Дата:</label>
+                            <input type="text" class="form-control" id="dayToShow" name="dayToShow">
                         </div>
 
                         <button type="submit" class="btn btn-primary">Показать</button>
@@ -36,7 +32,9 @@
                 @endif
             </div>
             <div class="panel-body">
-
+                @if(Request::method() == 'POST')
+                    <img class="img-responsive" src="/schedule/draw?id={{ $id }}&dayToShow={{ $dayToShow }}">
+                @endif
             </div>
         </div>
 

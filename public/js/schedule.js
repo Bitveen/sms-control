@@ -1,6 +1,6 @@
 (function() {
     "use strict";
-    $('.input-daterange').datepicker({
+    $('#dayToShow').datepicker({
         language: 'ru',
         orientation: 'top left'
     });

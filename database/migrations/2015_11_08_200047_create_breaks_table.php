@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessagesTable extends Migration
+class CreateBreaksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('breaks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('text');
-            $table->dateTime('receive_date');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->integer('subscriber_id')->unsigned();
             $table->foreign('subscriber_id')->references('id')->on('subscribers')->onDelete('cascade');
         });
@@ -28,6 +28,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('messages');
+        Schema::drop('breaks');
     }
 }
