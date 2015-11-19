@@ -11,7 +11,7 @@
 
 </head>
 <body>
-    <div class="vm-container">
+    <div class="container">
         @yield('content')
     </div>
     @yield('scripts')

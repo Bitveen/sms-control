@@ -25,44 +25,54 @@ class Schedule {
     }
 
 
-    public static function draw($breaks)
+    public static function drawOneSubscriber($breaks)
     {
-        $width = 1013;
-        $height = 500;
-
-        $leftLineSize = 5;
+        $width = 1032;
+        $height = 100;
         $bottomLineSize = 5;
 
-
-        $blackColor = 0x000000;
-        $whiteColor = 0xFFFFFF;
+        $image = imagecreatetruecolor($width, $height);
 
 
-        $image = ImageCreateTrueColor($width, $height);
+        // Цвета
+        $blackColor = imagecolorallocate($image, 0, 0, 0);
+        $whiteColor = imagecolorallocate($image, 255, 255, 255);
+        $greenColor = imagecolorallocate($image, 0, 255, 0);
 
-
-        ImageFilledRectangle($image, 0, 0, $width, $height, $whiteColor);
-        ImageFilledRectangle($image, 0, 0, $leftLineSize, $height - 15, $blackColor);
-        ImageFilledRectangle($image, 0, ($height - 15) - $bottomLineSize, $width, $height - 15, $blackColor);
-
-
-        $piece = ($width - $leftLineSize) / 24;
+        // Фон и нижняя линия
+        imagefilledrectangle($image, 0, 0, $width, $height, $whiteColor);
+        imagefilledrectangle($image, 0, ($height - 15) - $bottomLineSize, $width, $height - 15, $blackColor);
 
 
 
-        for ($i = 0; $i < count($breaks); $i++) {
-
-            //$hour = Carbon::parse($breaks[$i]->start_date)->hour;
+        $blockSize = $width / 24;
 
 
-            ImageString($image, 2, 0, $height - 15, $piece, $blackColor);
-
+        // Временная шкала
+        for ($i = 0; $i < 24; $i++) {
+            if ($i < 10) {
+                imagestring($image, 2, ($blockSize * $i), ($height - 15), '0'.$i.':00', $blackColor);
+            } else {
+                imagestring($image, 2, ($blockSize * $i), ($height - 15), $i.':00', $blackColor);
+            }
         }
 
 
-        header('Content-Type: image/png');
-        ImagePNG($image);
+        // Строим линию временную
+        for ($i = 0; $i < count($breaks); $i++) {
+            $hoursCount = Carbon::parse($breaks[$i]->start_date)->hour;
+            $endHour = Carbon::parse($breaks[$i]->end_date)->hour;
+            $lineSize = $endHour - $hoursCount;
 
+            //imagestring($image, 2, $blockSize * $hoursCount, 0, $endHour, $blackColor);
+            imagefilledrectangle($image, $blockSize * $hoursCount, 0, $blockSize * $hoursCount + ($lineSize * $blockSize), 79, $greenColor);
+        }
+
+
+
+        header('Content-Type: image/png');
+        imagepng($image);
+        imagedestroy($image);
 
     }
 

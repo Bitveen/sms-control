@@ -9,11 +9,12 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 @if(count($subscribers) > 0)
-                    <form action="/schedule" method="post" class="form-inline">
+                    <form id="scheduleForm" action="/schedule" method="post" class="form-inline">
                         <div class="form-group">
                             <label for="subscribers">Пользователь:</label>
                             <select name="subscriber" id="subscribers" class="form-control" title="Список пользователей">
                                 @foreach($subscribers as $subscriber)
+                                    <option value="all" selected>Все</option>
                                     <option value="{{ $subscriber->id }}">
                                         {{ $subscriber->last_name }}
                                         {{ mb_strcut($subscriber->first_name, 0, 2) }}.
@@ -31,10 +32,8 @@
                     </form>
                 @endif
             </div>
-            <div class="panel-body">
-                @if(Request::method() == 'POST')
-                    <img class="img-responsive" src="/schedule/draw?id={{ $id }}&dayToShow={{ $dayToShow }}">
-                @endif
+            <div class="panel-body"  style="overflow: scroll; text-align: center">
+                <canvas style="display: inline-block" id="canvas" width="600" height="600"></canvas>
             </div>
         </div>
 

@@ -1,52 +1,26 @@
-@import "./../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+$header-bg-color: #F7E8E8;
+$header-border-color: #ddd;
+
+@import "mixins";
 
 body, html {
   font-family: 'PT Sans', sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
-.vm-container {
-  @include container-fixed(0);
-}
 .container {
   position: relative;
 }
+
 .header {
-  background-color: #F7E8E8;
+  background-color: $header-bg-color;
   height: 50px;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 30px;
-  @include container-fixed(0);
-  &__title {
-    margin: 0;
-    text-align: center;
-    line-height: 50px;
-    color: #444;
-  }
-  &__page-title {
-    margin: 0;
-    line-height: 50px;
-    color: #444;
-    display: inline-block;
-    float: left;
-  }
-}
-
-.login-form {
-  margin: 30px auto 0 auto;
-  border: 1px solid #ddd;
-  padding: 30px 15px 15px 15px;
-}
-.subscriber-create {
-  margin: 30px auto 0 auto;
-  border: 1px solid #ddd;
-  padding: 30px 15px 15px 15px;
-}
-
-.canvas {
-  position: relative;
-  display: block;
-  margin: 0 auto;
+  border-bottom: 1px solid $header-border-color;
+  margin-bottom: 50px;
 }
 
 @import "form";
+@import "login-form";
+
 @import "menu";

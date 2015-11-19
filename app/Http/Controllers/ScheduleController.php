@@ -31,13 +31,19 @@ class ScheduleController extends Controller
     }
 
 
-    /* Метод отвечающий за отправку изображений клиенту */
-    public function draw(Request $request)
+    public function getBreaks(Request $request)
     {
-        $breaks = Schedule::getBreaksByIdAndDate($request->input('id'),
-            $request->input('dayToShow'));
-        Schedule::draw($breaks);
+        if ($request->has('subscriber')) {
+            $dayToShow = Carbon::createFromFormat('d.m.Y', $request->input('dayToShow'))->toDateString();
+            return response()
+                ->json(Schedule::getBreaksByIdAndDate($request->input('subscriber'), $dayToShow));
+        } else {
+            return response()->json(['status' => 'all']);
+        }
+
     }
+
+
 
 
 }

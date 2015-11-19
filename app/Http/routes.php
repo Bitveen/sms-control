@@ -6,8 +6,7 @@ Route::get('logout', 'AuthController@logout');
 
 
 Route::get('/schedule', 'ScheduleController@index');
-Route::post('/schedule', 'ScheduleController@index');
-Route::get('/schedule/draw', 'ScheduleController@draw');
+
 
 Route::get('/subscribers', 'SubscribersController@index');
 Route::post('/subscribers', 'SubscribersController@create');
@@ -18,5 +17,6 @@ Route::post('/subscribers/{id}', 'SubscribersController@update')
     ->where('id', '[0-9]+');
 
 
+Route::get('/api/breaks', 'ScheduleController@getBreaks');
 
 Route::get('/api/messages', 'ApiController@messages');

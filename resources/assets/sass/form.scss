@@ -1,44 +1,59 @@
+$f-border-color: #ddd;
+
 .form {
 
   &__row {
-    margin-bottom: 15px;
-
+    @include clearfix();
+    box-sizing: border-box;
+    padding: 15px;
   }
 
   &__label {
-    display: block;
     font-size: 14px;
     font-weight: bold;
+    line-height: 40px;
+  }
+  &__col-left {
+    position: relative;
+    float: left;
+    width: 100px;
+    box-sizing: border-box;
+    padding-right: 15px;
+    text-align: right;
+  }
+  &__col-right {
+    position: relative;
+    float: left;
+    width: 400px;
   }
 
   &__input {
-    width: 100%;
     box-sizing: border-box;
-    border: none;
-    border-bottom: 1px solid #ddd;
-    padding: 8px;
-    font-size: 14px;
+    border: 1px solid $f-border-color;
+    font-size: 13px;
     outline: none;
-    &:hover {
-      border-bottom: 1px solid #57799D;
-    }
-    &:focus {
-      border-bottom: 1px solid #57799D;
-    }
-
+    width: 100%;
+    height: 40px;
+    padding: 0 5px;
   }
 
   &__button {
     border: none;
     color: #57799D;
-    background-color: #fff;
-    padding: 5px 10px;
+    background-color: #F7E8E8;
+    padding: 10px 10px;
     font-weight: bold;
     font-size: 14px;
+    border-right: 1px solid #ddd;
     &:hover {
       cursor: pointer;
-      background-color: #f1f1f1;
-      border-radius: 3px;
+      background-color: darken(#F7E8E8, 5%);
     }
   }
+  &__footer {
+    border-top: 1px solid #ddd;
+    background-color: #F7E8E8;
+  }
+
+
 }
