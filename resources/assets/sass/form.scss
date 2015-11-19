@@ -6,12 +6,24 @@ $f-border-color: #ddd;
     @include clearfix();
     box-sizing: border-box;
     padding: 15px;
+    &_inline {
+      float: left;
+      padding: 0 15px 0 0;
+    }
+    &_with-margin {
+      margin-bottom: 30px;
+    }
   }
 
   &__label {
     font-size: 14px;
     font-weight: bold;
-    line-height: 40px;
+    margin-bottom: 5px;
+    display: inline-block;
+    &_inline {
+      line-height: 40px;
+      margin-bottom: 0;
+    }
   }
   &__col-left {
     position: relative;
@@ -35,21 +47,31 @@ $f-border-color: #ddd;
     width: 100%;
     height: 40px;
     padding: 0 5px;
+    &_data {
+      width: 200px;
+      height: 30px;
+    }
   }
 
   &__button {
     border: none;
     color: #57799D;
     background-color: #F7E8E8;
-    padding: 10px 10px;
+    padding: 11px 10px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
     border-right: 1px solid #ddd;
     &:hover {
       cursor: pointer;
       background-color: darken(#F7E8E8, 5%);
     }
+    &_inline {
+      border-right: none;
+      border-left: 1px solid #ddd;
+    }
   }
+
+
   &__footer {
     border-top: 1px solid #ddd;
     background-color: #F7E8E8;

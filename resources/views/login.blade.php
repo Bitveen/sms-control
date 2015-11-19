@@ -8,7 +8,7 @@
         <form action="/login" method="post" class="form">
             <div class="form__row">
                 <div class="form__col-left">
-                    <label class="form__label" for="login">Логин:</label>
+                    <label class="form__label form__label_inline" for="login">Логин:</label>
                 </div>
                 <div class="form__col-right">
                     <input class="form__input" autocomplete="off" type="text" id="login" name="login" placeholder="Введите Ваш логин">
@@ -16,7 +16,7 @@
             </div>
             <div class="form__row">
                 <div class="form__col-left">
-                    <label class="form__label" for="password">Пароль:</label>
+                    <label class="form__label form__label_inline" for="password">Пароль:</label>
                 </div>
                 <div class="form__col-right">
                     <input class="form__input" autocomplete="off" type="password" id="password" name="password" placeholder="Введите Ваш пароль">

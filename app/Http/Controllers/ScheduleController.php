@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Subscriber;
 use Illuminate\Http\Request;
@@ -8,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Schedule;
 
-class ScheduleController extends Controller
-{
+class ScheduleController extends Controller {
+
     public function __construct()
     {
         $this->middleware('auth');

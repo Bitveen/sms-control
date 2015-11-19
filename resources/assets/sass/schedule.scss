@@ -1,0 +1,15 @@
+.schedule {
+  width: 960px;
+  margin: 0 auto 30px auto;
+  border: 1px solid #ddd;
+  &__header {
+    background-color: #F7E8E8;
+    @include clearfix();
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+  }
+
+  &__body {
+
+  }
+}

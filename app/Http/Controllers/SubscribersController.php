@@ -1,14 +1,11 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Subscriber;
 use Session;
 
-class SubscribersController extends Controller
-{
+class SubscribersController extends Controller {
     public function __construct()
     {
         $this->middleware('auth');

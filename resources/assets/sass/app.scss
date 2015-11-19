@@ -7,6 +7,7 @@ body, html {
   font-family: 'PT Sans', sans-serif;
   padding: 0;
   margin: 0;
+  font-size: 100%;
 }
 
 .container {
@@ -20,7 +21,27 @@ body, html {
   margin-bottom: 50px;
 }
 
+.footer {
+  width: 960px;
+  margin: 0 auto 30px auto;
+  &__text {
+    text-align: center;
+    font-size: 12px;
+    margin: 0;
+    font-weight: bold;
+  }
+}
+
+/* Для календаря */
+.ui-datepicker {
+  font-size: 12px;
+}
+
 @import "form";
 @import "login-form";
 
 @import "menu";
+@import "schedule";
+@import "subscribers-create";
+@import "subscribers-list";
+@import "subscribers-view";

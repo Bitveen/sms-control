@@ -1,7 +1,9 @@
+@charset "UTF-8";
 body, html {
   font-family: 'PT Sans', sans-serif;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  font-size: 100%; }
 
 .container {
   position: relative; }
@@ -12,6 +14,19 @@ body, html {
   border-bottom: 1px solid #ddd;
   margin-bottom: 50px; }
 
+.footer {
+  width: 960px;
+  margin: 0 auto 30px auto; }
+  .footer__text {
+    text-align: center;
+    font-size: 12px;
+    margin: 0;
+    font-weight: bold; }
+
+/* Для календаря */
+.ui-datepicker {
+  font-size: 12px; }
+
 .form__row {
   box-sizing: border-box;
   padding: 15px; }
@@ -19,11 +34,20 @@ body, html {
     content: '';
     display: block;
     clear: both; }
+  .form__row_inline {
+    float: left;
+    padding: 0 15px 0 0; }
+  .form__row_with-margin {
+    margin-bottom: 30px; }
 
 .form__label {
   font-size: 14px;
   font-weight: bold;
-  line-height: 40px; }
+  margin-bottom: 5px;
+  display: inline-block; }
+  .form__label_inline {
+    line-height: 40px;
+    margin-bottom: 0; }
 
 .form__col-left {
   position: relative;
@@ -46,18 +70,24 @@ body, html {
   width: 100%;
   height: 40px;
   padding: 0 5px; }
+  .form__input_data {
+    width: 200px;
+    height: 30px; }
 
 .form__button {
   border: none;
   color: #57799D;
   background-color: #F7E8E8;
-  padding: 10px 10px;
+  padding: 11px 10px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
   border-right: 1px solid #ddd; }
   .form__button:hover {
     cursor: pointer;
     background-color: #f0d5d5; }
+  .form__button_inline {
+    border-right: none;
+    border-left: 1px solid #ddd; }
 
 .form__footer {
   border-top: 1px solid #ddd;
@@ -65,11 +95,15 @@ body, html {
 
 .login-form {
   width: 530px;
-  margin: 0 auto;
+  margin: 0 auto 30px auto;
   border: 1px solid #ddd; }
 
 .menu {
-  float: right; }
+  padding: 0 15px; }
+  .menu:after {
+    content: '';
+    display: block;
+    clear: both; }
   .menu__items {
     padding: 0;
     margin: 0;
@@ -82,10 +116,49 @@ body, html {
       margin-right: 0; }
   .menu__link {
     color: #57799D;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     text-decoration: none; }
     .menu__link:hover {
       color: #45607c; }
+
+.schedule {
+  width: 960px;
+  margin: 0 auto 30px auto;
+  border: 1px solid #ddd; }
+  .schedule__header {
+    background-color: #F7E8E8;
+    border-bottom: 1px solid #ddd;
+    padding: 15px; }
+    .schedule__header:after {
+      content: '';
+      display: block;
+      clear: both; }
+
+.subscribers-create {
+  width: 530px;
+  margin: 0 auto 30px auto;
+  border: 1px solid #ddd; }
+
+.subscribers-list {
+  width: 600px;
+  margin: 0 auto 30px auto;
+  border: 1px solid #ddd; }
+  .subscribers-list__link {
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #57799D;
+    font-size: 14px; }
+    .subscribers-list__link:hover {
+      background-color: #f1f1f1; }
+    .subscribers-list__link:link {
+      color: #57799D; }
+
+.subscribers-view {
+  width: 600px;
+  margin: 0 auto 30px auto;
+  border: 1px solid #ddd; }
 
 /*# sourceMappingURL=app.css.map */

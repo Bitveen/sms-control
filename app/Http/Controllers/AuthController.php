@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -8,8 +6,8 @@ use Auth;
 use Session;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class AuthController extends Controller
-{
+class AuthController extends Controller {
+
     public function index()
     {
         if (Auth::check()) {

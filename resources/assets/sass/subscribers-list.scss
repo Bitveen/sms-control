@@ -1,0 +1,19 @@
+.subscribers-list {
+  width: 600px;
+  margin: 0 auto 30px auto;
+  border: 1px solid #ddd;
+  &__link {
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #57799D;
+    font-size: 14px;
+    &:hover {
+      background-color: #f1f1f1;
+    }
+    &:link {
+      color: #57799D;
+    }
+  }
+}

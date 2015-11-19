@@ -1,12 +1,5 @@
 (function() {
     "use strict";
-    $('#dayToShow').datepicker({
-        language: 'ru',
-        orientation: 'top left'
-    });
-
-
-
     // Форма для передачи данных о графике
     var scheduleForm = document.getElementById('scheduleForm');
     var dayToShow = document.getElementById('dayToShow');

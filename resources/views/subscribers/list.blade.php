@@ -1,28 +1,26 @@
 @extends('index')
 
 
-@section('page_title', 'Список пользователей')
+@section('page_title', 'Список подписчиков')
 
 @section('content')
-    @include('nav', ['title' => 'Список пользователей'])
+    <header class="header">
+        @include('nav')
+    </header>
 
-    <div class="container" style="margin-top: 30px">
+    <div class="subscribers-list">
         @if(count($subscribers) > 0)
-            <div class="list-group">
-
-                @foreach($subscribers as $subscriber)
-                    <a href="/subscribers/{{ $subscriber->id }}" class="list-group-item">
-                        <span>{{ $subscriber->last_name }}</span>
-                        <span>{{ $subscriber->first_name }}</span>
-                        <span>{{ $subscriber->middle_name }}</span>
-                        <span class="label label-primary">{{ $subscriber->phone_number }}</span>
-                    </a>
-                @endforeach
-            </div>
+            @foreach($subscribers as $subscriber)
+                <a href="/subscribers/{{ $subscriber->id }}" class="subscribers-list__link">
+                    <span>{{ $subscriber->last_name }}</span>
+                    <span>{{ $subscriber->first_name }}</span>
+                    <span>{{ $subscriber->middle_name }}</span>
+                    <span style="float: right">{{ $subscriber->phone_number }}</span>
+                </a>
+            @endforeach
         @else
             <p>Пользователи отсутствуют.</p>
         @endif
-
     </div>
 
 @endsection
