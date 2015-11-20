@@ -114,6 +114,8 @@ body, html {
     margin-right: 15px; }
     .menu__item:last-child {
       margin-right: 0; }
+    .menu__item_logout {
+      float: right; }
   .menu__link {
     color: #57799D;
     font-size: 14px;

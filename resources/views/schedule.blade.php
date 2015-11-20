@@ -34,7 +34,7 @@
 
 
         <div class="schedule__body">
-            <canvas id="canvas" width="960" height="900"></canvas>
+            <canvas id="canvas" width="960" height="700"></canvas>
         </div>
     </div>
 

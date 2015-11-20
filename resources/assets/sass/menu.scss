@@ -13,6 +13,9 @@
     &:last-child {
       margin-right: 0;
     }
+    &_logout {
+      float: right;
+    }
   }
 
   &__link {
@@ -23,5 +26,7 @@
     &:hover {
       color: darken(#57799D, 10%);
     }
+
+
   }
 }
