@@ -31,12 +31,12 @@ class ScheduleController extends Controller {
 
     public function getBreaks(Request $request)
     {
+        $dayToShow = Carbon::createFromFormat('d.m.Y', $request->input('dayToShow'))->toDateString();
         if ($request->has('subscriber')) {
-            $dayToShow = Carbon::createFromFormat('d.m.Y', $request->input('dayToShow'))->toDateString();
             return response()
                 ->json(Schedule::getBreaksByIdAndDate($request->input('subscriber'), $dayToShow));
         } else {
-            return response()->json(['status' => 'all']);
+            return response()->json(Schedule::getBreaksByDate($dayToShow));
         }
 
     }

@@ -6,10 +6,16 @@
     background-color: #F7E8E8;
     @include clearfix();
     border-bottom: 1px solid #ddd;
-    padding: 15px;
+    padding: 10px;
   }
 
   &__body {
-
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
   }
+}
+
+.canvas-element {
+  display: inline-block;
 }

@@ -131,11 +131,18 @@ body, html {
   .schedule__header {
     background-color: #F7E8E8;
     border-bottom: 1px solid #ddd;
-    padding: 15px; }
+    padding: 10px; }
     .schedule__header:after {
       content: '';
       display: block;
       clear: both; }
+  .schedule__body {
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center; }
+
+.canvas-element {
+  display: inline-block; }
 
 .subscribers-create {
   width: 530px;

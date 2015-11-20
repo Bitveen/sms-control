@@ -19,3 +19,7 @@ Route::get('/subscribers/{id}', 'SubscribersController@view')
     ->where('id', '[0-9]+');
 Route::post('/subscribers/{id}', 'SubscribersController@update')
     ->where('id', '[0-9]+');
+
+
+
+Route::get('/api/breaks', 'ScheduleController@getBreaks');

@@ -7,20 +7,11 @@
             this.scheduleForm = document.getElementById('scheduleForm');
             this.dayToShow = document.getElementById('dayToShow');
             this.subscribersSelect = document.getElementById('subscribers');
+            this.canvasContainer = document.querySelector('.schedule__body');
 
 
-            this.canvas = document.getElementById('canvas');
-            this.context = this.canvas.getContext('2d');
+            this.scheduleForm.addEventListener('submit', this.handleSubmitForm.bind(this), false);
 
-
-
-            //this.scheduleForm.addEventListener('submit', this.handleSubmitForm.bind(this), false);
-            this.scheduleForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-
-                this.draw([]);
-
-            }.bind(this), false);
 
         },
         getOptionValue: function(options) {
@@ -33,16 +24,18 @@
             }
             return selectedOptionValue;
         },
+
+
         handleSubmitForm: function(event) {
             event.preventDefault();
             if (!this.dayToShow.value) {
                 return;
             }
             var url = '/api/breaks?dayToShow=' + this.dayToShow.value;
-            var selectedOptionValue = this.getOptionValue(this.subscribersSelect.options);
+            this.selectedOptionValue = this.getOptionValue(this.subscribersSelect.options);
 
-            if (selectedOptionValue && selectedOptionValue != 'all') {
-                url += '&subscriber=' + selectedOptionValue;
+            if (this.selectedOptionValue && this.selectedOptionValue != 'all') {
+                url += '&subscriber=' + this.selectedOptionValue;
             }
 
 
@@ -53,61 +46,99 @@
                 var response = event.target;
                 if (response.status == 200) {
                     var data = JSON.parse(response.responseText);
-                    if (selectedOptionValue == 'all') {
-                        self.drawAll(data);
+                    if (self.selectedOptionValue == 'all') {
+                        self.drawCircleAll(data);
                     } else {
-                        self.draw(data);
+                        self.drawCircle(data);
                     }
                 }
             }, false);
 
             request.send();
         },
-        draw: function(breaksData) {
 
-            this.context.font = "normal 12px Helvetica";
-            this.context.lineWidth = 2;
-            this.context.lineCap = "round";
+        makeLabel: function(startDate, endDate) {
+            var breakLabel = startDate.format("HH") + ':' + startDate.format('mm');
+            breakLabel += ' - ' + endDate.format('HH') + ':' + endDate.format('mm');
+            return breakLabel;
+        },
 
-
-            var width = this.canvas.width;
-            var height = this.canvas.height;
-
-            var blockSize = height / 24;
-
-            // Временная шкала
-            var leftPadding = this.context.measureText('00:00').width + 3;
-            this.context.fillRect(leftPadding, 0, 5, height);
-
-            this.context.beginPath();
-            var textToWrite;
-            for (var i = 0; i < 24; i++) {
-                this.context.moveTo(leftPadding - 5, height - (i * blockSize));
-                this.context.lineTo(leftPadding, height - (i * blockSize));
-                if (i < 10) {
-                    textToWrite = '0';
-                }
-                textToWrite += i + ':00';
-                this.context.fillText(textToWrite, 0, height - (i * blockSize) - 3);
-                textToWrite = '';
+        drawCircle: function(breaksData) {
+            //1440 - всего
+            var canvas = document.querySelector('.canvas-element');
+            if (!canvas) {
+                canvas = document.createElement('canvas');
+                canvas.width = 400;
+                canvas.height = 400;
+                canvas.className = "canvas-element";
+                this.canvasContainer.appendChild(canvas);
             }
-            this.context.stroke();
-            this.context.closePath();
+
+
+            var data = [];
 
 
 
 
-            this.context.fillStyle = "#4EC247";
 
-            this.context.fillRect(0, 0, 100, 50);
 
+            var breakTime = 0;
+            var startTime = 0;
+
+            for (var i = 0; i < breaksData.length; i++) {
+                var b = breaksData[i]; // объект перерыва
+                var startDate = moment(b.start_date);
+                var endDate = moment(b.end_date);
+                breakTime = Math.floor((endDate - startDate) / (60 * 1000));
+                var breakLabel = this.makeLabel(startDate, endDate);
+
+                
+                data.push({
+                    value: breakTime,
+                    color: "#F7464A",
+                    highlight: "#FF5A5E",
+                    label: "Перерыв: " + breakLabel
+                });
+
+
+                if (!(startDate.minutes() == 0 && startDate.hours() == 0)) {
+                    startTime = (60 * startDate.hours()) + startDate.minutes();
+                    data.unshift({
+                        value: startTime,
+                        color: "#46BFBD",
+                        highlight: "#5AD3D1",
+                        label: "Рабочее время"
+                    });
+                }
+
+
+
+
+            }
+
+
+
+            data.push({
+                value: (1440 - breakTime) - startTime,
+                color: "#46BFBD",
+                highlight: "#5AD3D1",
+                label: "Рабочее время"
+            });
+
+
+
+
+
+            var chart = new Chart(canvas.getContext('2d')).Pie(data, {
+                tooltipTemplate: "<%= label %>"
+            });
 
         },
 
-        drawAll: function(breaksData) {
 
 
 
+        drawCircleAll: function(breaksData) {
 
         }
 
@@ -117,11 +148,6 @@
     };
     schedule.init();
 
-
-
-    function drawMultipleSchedule(data) {
-
-    }
 
 
 
