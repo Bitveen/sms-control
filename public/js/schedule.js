@@ -92,7 +92,7 @@
                 breakTime = Math.floor((endDate - startDate) / (60 * 1000));
                 var breakLabel = this.makeLabel(startDate, endDate);
 
-                
+
                 data.push({
                     value: breakTime,
                     color: "#F7464A",

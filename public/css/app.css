@@ -88,6 +88,10 @@ body, html {
   .form__button_inline {
     border-right: none;
     border-left: 1px solid #ddd; }
+  .form__button_drop {
+    float: right;
+    border-right: none;
+    color: red; }
 
 .form__footer {
   border-top: 1px solid #ddd;

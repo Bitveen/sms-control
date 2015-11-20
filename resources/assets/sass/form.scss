@@ -69,6 +69,11 @@ $f-border-color: #ddd;
       border-right: none;
       border-left: 1px solid #ddd;
     }
+    &_drop {
+      float: right;
+      border-right: none;
+      color: red;
+    }
   }
 
 

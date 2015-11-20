@@ -16,9 +16,9 @@ class Subscriber {
         ]);
     }
 
-    public static function drop()
+    public static function drop($id)
     {
-
+        return DB::table('subscribers')->where('id', '=', $id)->delete();
     }
 
     public static function all()

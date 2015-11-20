@@ -62,6 +62,17 @@ class SubscribersController extends Controller {
         return redirect('/subscribers');
     }
 
+    public function drop(Request $request)
+    {
+        $id = $request->input('id');
+        if (Subscriber::drop($id)) {
+            Session::flash('subscriberDropSuccess', 'Подписчик успешно удален.');
+            return response()->json(['status' => 'deleted']);
+        } else {
+            return response()->json(['status' => 'error'], 500);
+        }
+    }
+
 
 
 
