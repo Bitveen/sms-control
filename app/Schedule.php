@@ -15,7 +15,7 @@ class Schedule {
      */
     public static function getBreaksByIdAndDate($id, $date)
     {
-        $query = "SELECT * FROM breaks WHERE subscriber_id=? AND start_date BETWEEN ? AND (? + INTERVAL 1 DAY)";
+        $query = "SELECT * FROM breaks WHERE subscriber_id=? AND start_date BETWEEN ? AND (? + INTERVAL 1 DAY) ORDER BY start_date";
         return DB::select($query, [
             $id,
             $date,
@@ -26,7 +26,7 @@ class Schedule {
 
     public static function getBreaksByDate($date)
     {
-        $query = "SELECT * FROM breaks WHERE start_date BETWEEN ? AND (? + INTERVAL 1 DAY)";
+        $query = "SELECT * FROM breaks WHERE start_date BETWEEN ? AND (? + INTERVAL 1 DAY) ORDER BY start_date";
         return DB::select($query, [
             $date,
             $date
