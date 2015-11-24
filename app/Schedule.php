@@ -3,6 +3,13 @@
 use DB;
 use Carbon\Carbon;
 
+
+/**
+ * Класс-модель для управления графиком
+ *
+ * Class Schedule
+ * @package App
+ */
 class Schedule {
 
 
@@ -24,6 +31,12 @@ class Schedule {
 
     }
 
+    /**
+     * Получить все перерывы для каждого пользователя в определенный день
+     *
+     * @param $date
+     * @return mixed
+     */
     public static function getBreaksByDate($date)
     {
         $query = "SELECT * FROM breaks WHERE start_date BETWEEN ? AND (? + INTERVAL 1 DAY) ORDER BY start_date";
@@ -32,6 +45,22 @@ class Schedule {
             $date
         ]);
 
+    }
+
+    /**
+     * Обновить дату и время перерыва
+     *
+     * @param $id
+     * @param $startDate
+     * @param $endDate
+     * @return mixed
+     */
+    public static function updateBreakById($id, $startDate, $endDate)
+    {
+        return DB::table('breaks')->where('id', '=', $id)->update([
+            'start_date' => $startDate,
+            'end_date' => $endDate
+        ]);
     }
 
 

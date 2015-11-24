@@ -29,6 +29,9 @@
             </div>
             <div class="form__footer">
                 <button type="submit" class="form__button">Создать</button>
+                @if(Session::has('subscriberCreateError'))
+                    <span>{{ Session::get('subscriberCreateError') }}</span>
+                @endif
             </div>
         </form>
     </div>

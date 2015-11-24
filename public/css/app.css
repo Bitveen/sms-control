@@ -73,6 +73,9 @@ body, html {
   .form__input_data {
     width: 200px;
     height: 30px; }
+  .form__input_inline {
+    float: left;
+    width: auto; }
 
 .form__button {
   border: none;
@@ -129,9 +132,10 @@ body, html {
       color: #45607c; }
 
 .schedule {
-  width: 960px;
+  width: 900px;
   margin: 0 auto 30px auto;
-  border: 1px solid #ddd; }
+  border: 1px solid #ddd;
+  box-sizing: border-box; }
   .schedule__header {
     background-color: #F7E8E8;
     border-bottom: 1px solid #ddd;
@@ -144,9 +148,32 @@ body, html {
     padding: 10px;
     box-sizing: border-box;
     text-align: center; }
+    .schedule__body:after {
+      content: '';
+      display: block;
+      clear: both; }
+  .schedule__info {
+    float: right;
+    width: 450px; }
+
+.info__row {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 30px; }
+  .info__row:after {
+    content: '';
+    display: block;
+    clear: both; }
 
 .canvas-element {
-  display: inline-block; }
+  float: left; }
+
+.breaks__link {
+  font-size: 13px;
+  color: #57799D;
+  text-decoration: none;
+  line-height: 40px; }
 
 .subscribers-create {
   width: 530px;

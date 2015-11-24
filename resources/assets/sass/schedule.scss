@@ -1,7 +1,8 @@
 .schedule {
-  width: 960px;
+  width: 900px;
   margin: 0 auto 30px auto;
   border: 1px solid #ddd;
+  box-sizing: border-box;
   &__header {
     background-color: #F7E8E8;
     @include clearfix();
@@ -13,9 +14,30 @@
     padding: 10px;
     box-sizing: border-box;
     text-align: center;
+    @include clearfix();
   }
+
+  &__info {
+    float: right;
+    width: 450px;
+  }
+
+}
+
+.info__row {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  @include clearfix();
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 30px;
 }
 
 .canvas-element {
-  display: inline-block;
+  float: left;
+}
+.breaks__link {
+  font-size: 13px;
+  color: #57799D;
+  text-decoration: none;
+  line-height: 40px;
 }
