@@ -27,4 +27,8 @@ class ScheduleController extends Controller {
         $subscribers = Subscriber::all();
         return view('schedule')->with('subscribers', $subscribers);
     }
+
+    public function parseMessage(Request $request) {}
+
+
 }

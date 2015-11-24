@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Schedule;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Subscriber;
@@ -90,7 +92,16 @@ class SubscribersController extends Controller {
         if (!$subscriber) {
             abort(404);
         }
-        return view('subscribers.view')->with('subscriber', $subscriber);
+        $breaks = Schedule::getBreaksById($id);
+
+
+        for ($i = 0; $i < count($breaks); $i++) {
+            $breaks[$i]->start_date = Carbon::parse($breaks[$i]->start_date);
+            $breaks[$i]->end_date = Carbon::parse($breaks[$i]->end_date);
+        }
+
+
+        return view('subscribers.view')->with('subscriber', $subscriber)->with('breaks', $breaks);
     }
 
 

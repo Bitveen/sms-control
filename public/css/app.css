@@ -48,6 +48,8 @@ body, html {
   .form__label_inline {
     line-height: 40px;
     margin-bottom: 0; }
+  .form__label_block {
+    display: block; }
 
 .form__col-left {
   position: relative;
@@ -71,6 +73,9 @@ body, html {
   height: 40px;
   padding: 0 5px; }
   .form__input_data {
+    width: 150px;
+    height: 30px; }
+  .form__input_time {
     width: 200px;
     height: 30px; }
   .form__input_inline {
@@ -95,6 +100,11 @@ body, html {
     float: right;
     border-right: none;
     color: red; }
+
+.form__select {
+  border: 1px solid #ddd;
+  width: 100%;
+  height: 40px; }
 
 .form__footer {
   border-top: 1px solid #ddd;
@@ -123,6 +133,8 @@ body, html {
       margin-right: 0; }
     .menu__item_logout {
       float: right; }
+    .menu__item_separator {
+      color: #aaa; }
   .menu__link {
     color: #57799D;
     font-size: 14px;
@@ -179,6 +191,9 @@ body, html {
   width: 530px;
   margin: 0 auto 30px auto;
   border: 1px solid #ddd; }
+  .subscribers-create__header {
+    padding-left: 15px;
+    display: inline-block; }
 
 .subscribers-list {
   width: 600px;
@@ -200,5 +215,35 @@ body, html {
   width: 600px;
   margin: 0 auto 30px auto;
   border: 1px solid #ddd; }
+  .subscribers-view__header {
+    padding-left: 15px;
+    display: inline-block; }
+
+.breaks-create {
+  width: 530px;
+  margin: 0 auto 30px auto;
+  border: 1px solid #ddd; }
+  .breaks-create__header {
+    padding-left: 15px;
+    display: inline-block; }
+
+.breaks-list {
+  width: 600px;
+  margin: 0 auto 30px auto;
+  border: 1px solid #ddd; }
+  .breaks-list__header {
+    padding-left: 15px;
+    display: inline-block; }
+  .breaks-list__link {
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #57799D;
+    font-size: 14px; }
+    .breaks-list__link:hover {
+      background-color: #f1f1f1; }
+    .breaks-list__link:link {
+      color: #57799D; }
 
 /*# sourceMappingURL=app.css.map */

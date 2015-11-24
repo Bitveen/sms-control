@@ -12,7 +12,7 @@
                 <form id="scheduleForm" class="form">
                     <div class="form__row form__row_inline">
                         <label class="form__label form__label_inline" for="subscribers">Подписчики:</label>
-                        <select name="subscriber" id="subscribers" class="form__select">
+                        <select name="subscriber" id="subscribers">
                             <option value="all" selected>Все</option>
                             @foreach($subscribers as $subscriber)
                                 <option value="{{ $subscriber->id }}">

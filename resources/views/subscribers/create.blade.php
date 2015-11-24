@@ -9,6 +9,7 @@
 
 
     <div class="subscribers-create">
+        <h3 class="subscribers-create__header">Создать подписчика</h3>
         <form action="/subscribers" method="post" class="form">
             <div class="form__row">
                 <label for="lastName" class="form__label">Фамилия пользователя</label>

@@ -64,6 +64,33 @@ class Schedule {
     }
 
 
+    public static function getBreaks()
+    {
+        return DB::table('breaks')->select('*')->orderBy('start_date', 'asc');
+    }
 
+
+    public static function createBreak($subscriber, $startDate, $endDate)
+    {
+        return DB::table('breaks')->insert([
+            'subscriber_id' => $subscriber,
+            'start_date' => $startDate,
+            'end_date' => $endDate
+        ]);
+    }
+
+    public static function getBreaksById($id)
+    {
+        return DB::table('breaks')->where('subscriber_id', '=', $id)->select('*')->get();
+    }
+
+
+    public static function getBreak($id)
+    {
+        return DB::table('breaks')->join('subscribers', 'subscribers.id', '=', 'breaks.subscriber_id')
+            ->select('subscribers.first_name', 'subscribers.last_name', 'subscribers.middle_name', 'breaks.id', 'breaks.start_date', 'breaks.end_date')
+            ->where('breaks.id', '=', $id)
+            ->get()[0];
+    }
 
 }
