@@ -44,5 +44,6 @@
 @section('scripts')
     <script src="/js/vendor/jquery-ui-1.9.2.custom.js"></script>
     <script src="/js/vendor/moment-with-locales.js"></script>
+    <script src="/js/datepicker-settings.js"></script>
     <script src="/js/breaks-create.js"></script>
 @endsection

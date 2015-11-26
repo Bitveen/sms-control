@@ -49,6 +49,6 @@
     <script src="/js/vendor/jquery-ui-1.9.2.custom.js"></script>
     <script src="/js/vendor/Chart.js"></script>
     <script src="/js/vendor/moment-with-locales.js"></script>
-    <script src="/js/datepicker.js"></script>
+    <script src="/js/datepicker-settings.js"></script>
     <script src="/js/schedule.js"></script>
 @endsection

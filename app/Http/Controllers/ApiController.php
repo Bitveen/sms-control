@@ -41,10 +41,13 @@ class ApiController extends Controller {
      */
     public function updateBreak($id, Request $request)
     {
-        $startDate = Carbon::createFromFormat('d.m.Y H:i:s', $request->input('startDate'));
-        $endDate = Carbon::createFromFormat('d.m.Y H:i:s', $request->input('endDate'));
+        $startDate = Carbon::createFromFormat('d.m.Y H:i', $request->input('startDate'));
+        $endDate = Carbon::createFromFormat('d.m.Y H:i', $request->input('endDate'));
         if (Schedule::updateBreakById($id, $startDate, $endDate)) {
-            return response()->json(['status' => 'updated']);
+            return response()->json([
+                'start_date' => $startDate,
+                'end_date' => $endDate
+            ]);
         } else {
             return response()->json(['status' => 'error'], 500);
         }
