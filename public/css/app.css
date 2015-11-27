@@ -25,7 +25,12 @@ body, html {
 
 /* Для календаря */
 .ui-datepicker {
-  font-size: 12px; }
+  font-size: 13px; }
+
+.row:after {
+  content: '';
+  display: block;
+  clear: both; }
 
 .form__row {
   box-sizing: border-box;
@@ -158,8 +163,7 @@ body, html {
       clear: both; }
   .schedule__body {
     padding: 10px;
-    box-sizing: border-box;
-    text-align: center; }
+    box-sizing: border-box; }
     .schedule__body:after {
       content: '';
       display: block;
@@ -186,6 +190,18 @@ body, html {
   color: #57799D;
   text-decoration: none;
   line-height: 40px; }
+
+.chart {
+  float: left;
+  width: 450px;
+  box-sizing: border-box;
+  padding-right: 15px;
+  border-right: 1px solid #ddd;
+  text-align: center; }
+
+.breaks-inputs {
+  float: right;
+  width: 400px; }
 
 .subscribers-create {
   width: 530px;
@@ -245,5 +261,35 @@ body, html {
       background-color: #f1f1f1; }
     .breaks-list__link:link {
       color: #57799D; }
+
+.break {
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0; }
+  .break:after {
+    content: '';
+    display: block;
+    clear: both; }
+  .break__label {
+    font-size: 14px;
+    font-weight: bold; }
+  .break__input {
+    font-size: 12px;
+    padding: 0 5px;
+    height: 30px;
+    outline: none;
+    width: 50px;
+    text-align: center; }
+    .break__input_alert {
+      border: 1px solid red; }
+  .break__save {
+    text-decoration: none;
+    font-size: 13px;
+    color: #57799D;
+    padding: 10px;
+    text-transform: lowercase;
+    font-weight: bold; }
+    .break__save:hover {
+      background-color: #f1f1f1; }
 
 /*# sourceMappingURL=app.css.map */

@@ -13,7 +13,6 @@
   &__body {
     padding: 10px;
     box-sizing: border-box;
-    text-align: center;
     @include clearfix();
   }
 
@@ -40,4 +39,17 @@
   color: #57799D;
   text-decoration: none;
   line-height: 40px;
+}
+
+.chart {
+  float: left;
+  width: 450px;
+  box-sizing: border-box;
+  padding-right: 15px;
+  border-right: 1px solid #ddd;
+  text-align: center;
+}
+.breaks-inputs {
+  float: right;
+  width: 400px;
 }

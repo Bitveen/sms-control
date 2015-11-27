@@ -6,6 +6,7 @@
   "dependencies": {
     "bootstrap-sass": "^3.0.0",
     "chart.js": "^1.0.2",
+    "handlebars": "^4.0.5",
     "laravel-elixir": "^3.0.0",
     "moment": "^2.10.6"
   }

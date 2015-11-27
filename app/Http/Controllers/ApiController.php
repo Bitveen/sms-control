@@ -42,7 +42,14 @@ class ApiController extends Controller {
     public function updateBreak($id, Request $request)
     {
         $startDate = Carbon::createFromFormat('d.m.Y H:i', $request->input('startDate'));
-        $endDate = Carbon::createFromFormat('d.m.Y H:i', $request->input('endDate'));
+
+        if (trim($request->input('endDate')) == '-') {
+            $endDate = 'NULL';
+        } else {
+            $endDate = Carbon::createFromFormat('d.m.Y H:i', $request->input('endDate'));
+        }
+
+
         if (Schedule::updateBreakById($id, $startDate, $endDate)) {
             return response()->json([
                 'start_date' => $startDate,
@@ -76,6 +83,22 @@ class ApiController extends Controller {
         }
     }
 
+
+    public function dropBreak($id)
+    {
+        if (Schedule::dropBreak($id)) {
+            return response()->json(['status' => 'success'], 200);
+        } else {
+            return response()->json(['status' => 'error'], 500);
+        }
+    }
+
+    public function parseMessage(Request $request)
+    {
+
+
+
+    }
 
 
 }

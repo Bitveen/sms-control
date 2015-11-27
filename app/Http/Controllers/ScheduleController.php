@@ -28,7 +28,7 @@ class ScheduleController extends Controller {
         return view('schedule')->with('subscribers', $subscribers);
     }
 
-    public function parseMessage(Request $request) {}
+
 
 
 }

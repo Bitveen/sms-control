@@ -28,14 +28,14 @@
 
             <div class="form__row">
                 <label class="form__label form__label_block" for="startDate">Дата начала:</label>
-                <input type="text" id="startDate" name="startDate" class="form__input form__input_data" placeholder="Дата начала">
-                <input type="text" name="startTime" class="form__input form__input_time" placeholder="Время в формате 00:00">
+                <input autocomplete="off" type="text" id="startDate" name="startDate" class="form__input form__input_data" placeholder="Дата начала">
+                <input autocomplete="off" type="text" name="startTime" class="form__input form__input_time" placeholder="Время в формате 00:00">
             </div>
 
             <div class="form__row">
                 <label class="form__label form__label_block" for="endDate">Дата окончания:</label>
-                <input type="text" id="endDate" name="endDate" class="form__input form__input_data" placeholder="Дата окончания">
-                <input type="text" name="endTime" class="form__input form__input_time" placeholder="Время в формате 00:00">
+                <input autocomplete="off" type="text" id="endDate" name="endDate" class="form__input form__input_data" placeholder="Дата окончания">
+                <input autocomplete="off" type="text" name="endTime" class="form__input form__input_time" placeholder="Время в формате 00:00">
             </div>
 
             <div class="form__footer">

@@ -81,16 +81,22 @@ class Schedule {
 
     public static function getBreaksById($id)
     {
-        return DB::table('breaks')->where('subscriber_id', '=', $id)->select('*')->get();
+        return DB::table('breaks')->where('subscriber_id', '=', $id)->select('*')->orderBy('start_date', 'asc')->get();
     }
 
 
     public static function getBreak($id)
     {
         return DB::table('breaks')->join('subscribers', 'subscribers.id', '=', 'breaks.subscriber_id')
-            ->select('subscribers.first_name', 'subscribers.last_name', 'subscribers.middle_name', 'breaks.id', 'breaks.start_date', 'breaks.end_date')
+            ->select('subscribers.first_name', 'subscribers.last_name', 'subscribers.middle_name', 'breaks.id', 'breaks.start_date', 'breaks.end_date', 'breaks.subscriber_id')
             ->where('breaks.id', '=', $id)
             ->get()[0];
     }
+
+    public static function dropBreak($id)
+    {
+        return DB::table('breaks')->where('id', '=', $id)->delete();
+    }
+
 
 }

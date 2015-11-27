@@ -31,5 +31,6 @@ Route::post('/subscribers/{id}', 'SubscribersController@update')
 Route::get('/api/breaks', 'ApiController@getBreaks');
 Route::post('/api/breaks/{id}', 'ApiController@updateBreak');
 Route::post('/api/subscribers/drop', 'ApiController@dropSubscriber');
+Route::post('/api/breaks/drop/{id}', 'ApiController@dropBreak');
 
-Route::post('/messages', 'ScheduleController@parseMessage');
+Route::post('/api/messages', 'ApiController@parseMessage');

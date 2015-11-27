@@ -34,8 +34,12 @@ body, html {
 
 /* Для календаря */
 .ui-datepicker {
-  font-size: 12px;
+  font-size: 13px;
 }
+.row {
+  @include clearfix();
+}
+
 
 @import "form";
 @import "login-form";
@@ -47,3 +51,4 @@ body, html {
 @import "subscribers-view";
 @import "breaks-create";
 @import "breaks-list";
+@import "breaks";

@@ -75,8 +75,14 @@ class BreaksController extends Controller {
             return redirect()->back();
         }
 
-        $startDate = Carbon::createFromFormat('d.m.Y H:i', $request->input('startDate').' '.trim($request->input('startTime')));
-        $endDate = Carbon::createFromFormat('d.m.Y H:i', $request->input('endDate').' '.trim($request->input('endTime')));
+
+        $requestedStartDate = $request->input('startDate').' '.trim($request->input('startTime')).':00';
+        $requestedEndDate = $request->input('endDate').' '.trim($request->input('endTime')).':00';
+
+
+        $startDate = Carbon::createFromFormat('d.m.Y H:i:s', $requestedStartDate)->toDateTimeString();
+        $endDate = Carbon::createFromFormat('d.m.Y H:i:s', $requestedEndDate)->toDateTimeString();
+
 
         if (Schedule::updateBreakById($id, $startDate, $endDate)) {
             Session::flash('breakUpdateSuccess', 'Обновлено');
