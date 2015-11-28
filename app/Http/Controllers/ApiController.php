@@ -93,8 +93,29 @@ class ApiController extends Controller {
         }
     }
 
+
+
     public function parseMessage(Request $request)
     {
+        $phone = $request->input('phone');
+        $message = trim($request->input('message'));
+
+        $subscriberId = Subscriber::getByPhoneNumber($phone)->id;
+        if (preg_match('/Уш[оеё]л$/ui', $message)) {
+            //создать новую запись
+            if (Schedule::createBreak($subscriberId, Carbon::now('Europe/Moscow'), null)) {
+                echo 'Created!';
+            }
+        } else if (preg_match('/Пр[ие]ш[еёо]л$/ui', $message)) {
+            //обновить существующую
+            $breakId = Schedule::getLastBreak($subscriberId)->id;
+            Schedule::updateEndDate($breakId, Carbon::now('Europe/Moscow'));
+        }
+
+
+
+
+
 
 
 

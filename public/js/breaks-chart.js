@@ -36,7 +36,7 @@ BreaksChart.prototype.setData = function(data) {
             value: breakTime,
             color: "#F7464A",
             highlight: "#FF5A5E",
-            label: "Перерыв: " + breakLabel,
+            label: breakLabel,
             id: data[i].id
         });
         remainingTime -= (countPoint + breakTime);

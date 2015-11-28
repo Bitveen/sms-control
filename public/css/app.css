@@ -203,6 +203,22 @@ body, html {
   float: right;
   width: 400px; }
 
+.multiple-charts:after {
+  content: '';
+  display: block;
+  clear: both; }
+
+.subscriber-chart {
+  width: 230px;
+  height: 330px;
+  box-sizing: border-box;
+  padding: 15px;
+  float: left;
+  text-align: center;
+  border: 1px solid #ddd; }
+  .subscriber-chart__title {
+    margin: 15px 0 0 0; }
+
 .subscribers-create {
   width: 530px;
   margin: 0 auto 30px auto;

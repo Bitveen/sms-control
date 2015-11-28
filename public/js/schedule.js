@@ -47,13 +47,14 @@
 
     function handleFormSubmit(event) {
         event.preventDefault();
+        var date = dayToShow.value.trim();
 
-
-        if (!dayToShow.value) {
+        if (!(/^\d{2}\.\d{2}\.\d{4}$/.test(date))) {
             return;
         }
 
-        var url = '/api/breaks?dayToShow=' + dayToShow.value;
+
+        var url = '/api/breaks?dayToShow=' + date;
         var selectedOptionValue = getOptionValue(subscribersSelect.options);
         if (selectedOptionValue && selectedOptionValue != 'all') {
             url += '&subscriber=' + selectedOptionValue;
@@ -65,13 +66,10 @@
                     data: chart.getRawData()
                 });
 
-
-
                 var canvas = document.getElementById('chart-element');
                 if (canvas) {
                     chart.run(canvas);
                 }
-
 
                 var breaksInputs = document.querySelector('.breaks-inputs');
                 breaksInputs.addEventListener('click', handleSaveButton, false);
@@ -83,6 +81,60 @@
 
         } else {
             chart = null;
+            uploadSubscribers('/api/breaks?dayToShow=' + date, function(data) {
+                var subscribers = [];
+                var hasCurrentElement;
+                for (var i = 0; i < data.length; i++) {
+                    hasCurrentElement = false;
+                    for (var j = 0; j < subscribers.length; j++) {
+                        if (data[i].id == subscribers[j].id) {
+                            hasCurrentElement = true;
+                            break;
+                        }
+                    }
+                    if (!hasCurrentElement) {
+                        subscribers.push({
+                            id: data[i].id,
+                            first_name: data[i].first_name,
+                            last_name: data[i].last_name,
+                            middle_name: data[i].middle_name
+                        });
+                        hasCurrentElement = false;
+                    }
+                }
+                container.innerHTML = multipleChartViewTemplate({
+                    subscribers: subscribers
+                });
+
+
+                var chartElements = document.querySelectorAll('.subscriber-chart');
+                var dataForChart = [];
+                for (i = 0; i < chartElements.length; i++) {
+                    var chartId = chartElements[i].dataset.id;
+                    for (j = 0; j < data.length; j++) {
+                        if (data[j].id == chartId) {
+                            dataForChart.push(data[j]);
+                        }
+                    }
+                    // сформировал и можно создавать объекты
+                    charts[i] = new BreaksChart();
+                    charts[i].setData(dataForChart);
+                    charts[i].run(chartElements[i].querySelector('canvas'));
+                    dataForChart = [];
+                }
+
+
+
+
+
+
+
+
+
+            });
+
+
+
 
         }
 
@@ -92,6 +144,17 @@
     }
 
 
+
+    function uploadSubscribers(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.addEventListener('load', function(event) {
+            if (event.target.status === 200) {
+                callback(JSON.parse(event.target.responseText));
+            }
+        }, false);
+        xhr.send();
+    }
 
 
 

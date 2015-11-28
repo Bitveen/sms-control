@@ -33,4 +33,4 @@ Route::post('/api/breaks/{id}', 'ApiController@updateBreak');
 Route::post('/api/subscribers/drop', 'ApiController@dropSubscriber');
 Route::post('/api/breaks/drop/{id}', 'ApiController@dropBreak');
 
-Route::post('/api/messages', 'ApiController@parseMessage');
+Route::get('/api/messages', 'ApiController@parseMessage');

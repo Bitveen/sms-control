@@ -87,5 +87,9 @@ class Subscriber {
         ]);
     }
 
+    public static function getByPhoneNumber($phoneNumber)
+    {
+        return DB::table('subscribers')->where('phone_number', '=', $phoneNumber)->select('*')->get()[0];
+    }
 
 }

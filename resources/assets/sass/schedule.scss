@@ -53,3 +53,21 @@
   float: right;
   width: 400px;
 }
+
+
+.multiple-charts {
+  @include clearfix();
+}
+
+.subscriber-chart {
+  width: 230px;
+  height: 330px;
+  box-sizing: border-box;
+  padding: 15px;
+  float: left;
+  text-align: center;
+  border: 1px solid #ddd;
+  &__title {
+    margin: 15px 0 0 0;
+  }
+}

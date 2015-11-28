@@ -27,9 +27,10 @@
 
     <script id="multiple-chart-view" type="text/x-handlebars-template">
         <div class="multiple-charts">
-            @{{#each subscriber}}
-                <div class="subscriber-chart">
-                    <canvas width="150" height="150"></canvas>
+            @{{#each subscribers}}
+                <div class="subscriber-chart" data-id="@{{this.id}}">
+                    <canvas width="200" height="200"></canvas>
+                    <h4 class="subscriber-chart__title">@{{this.last_name}} @{{this.first_name}} @{{this.middle_name}}</h4>
                 </div>
             @{{/each}}
         </div>

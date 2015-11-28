@@ -39,12 +39,14 @@ class Schedule {
      */
     public static function getBreaksByDate($date)
     {
-        $query = "SELECT * FROM breaks WHERE start_date BETWEEN ? AND (? + INTERVAL 1 DAY) ORDER BY start_date";
+        $query = "SELECT breaks.start_date, breaks.end_date, breaks.id as break_id, "
+                ."subscribers.id, subscribers.first_name, subscribers.last_name, subscribers.middle_name "
+                ."FROM breaks INNER JOIN subscribers ON breaks.subscriber_id = subscribers.id "
+                ."WHERE breaks.start_date BETWEEN ? AND (? + INTERVAL 1 DAY) ORDER BY subscribers.id, breaks.start_date";
         return DB::select($query, [
             $date,
             $date
         ]);
-
     }
 
     /**
@@ -96,6 +98,19 @@ class Schedule {
     public static function dropBreak($id)
     {
         return DB::table('breaks')->where('id', '=', $id)->delete();
+    }
+
+    public static function getLastBreak($subscriberId)
+    {
+        $query = 'SELECT * FROM breaks WHERE subscriber_id=? AND end_date IS NULL ORDER BY start_date DESC LIMIT 1';
+        return DB::select($query, [$subscriberId])[0];
+    }
+
+    public static function updateEndDate($id, $date)
+    {
+        return DB::table('breaks')->where('id', '=', $id)->update([
+            'end_date' => $date
+        ]);
     }
 
 
