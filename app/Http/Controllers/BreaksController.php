@@ -15,8 +15,11 @@ class BreaksController extends Controller {
         $this->middleware('auth');
     }
 
-    public function showForm()
+    public function showForm(Request $request)
     {
+        if ($request->user()->role == 'user') {
+            return redirect()->back();
+        }
         $subscribers = Subscriber::all();
         return view('breaks.create')->with('subscribers', $subscribers);
     }
@@ -51,11 +54,19 @@ class BreaksController extends Controller {
     }
 
 
-    public function view($id)
+    public function view($id, Request $request)
     {
+        if ($request->user()->role == 'user') {
+            return redirect()->back();
+        }
         $breakItem = Schedule::getBreak($id);
+
+        if (!$breakItem->end_date) {
+            $breakItem->end_date = Carbon::now('Europe/Moscow');
+        } else {
+            $breakItem->end_date = Carbon::parse($breakItem->end_date);
+        }
         $breakItem->start_date = Carbon::parse($breakItem->start_date);
-        $breakItem->end_date = Carbon::parse($breakItem->end_date);
 
         return view('breaks.view')->with('breakItem', $breakItem);
 

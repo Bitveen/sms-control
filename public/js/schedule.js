@@ -82,26 +82,30 @@
         } else {
             chart = null;
             uploadSubscribers('/api/breaks?dayToShow=' + date, function(data) {
-                var subscribers = [];
-                var hasCurrentElement;
-                for (var i = 0; i < data.length; i++) {
-                    hasCurrentElement = false;
-                    for (var j = 0; j < subscribers.length; j++) {
-                        if (data[i].id == subscribers[j].id) {
-                            hasCurrentElement = true;
-                            break;
-                        }
-                    }
-                    if (!hasCurrentElement) {
-                        subscribers.push({
-                            id: data[i].id,
-                            first_name: data[i].first_name,
-                            last_name: data[i].last_name,
-                            middle_name: data[i].middle_name
-                        });
-                        hasCurrentElement = false;
-                    }
-                }
+
+                var subscribers = data.subscribers;
+                var breaks = data.breaks;
+
+
+                // var hasCurrentElement;
+                // for (var i = 0; i < data.length; i++) {
+                //     hasCurrentElement = false;
+                //     for (var j = 0; j < subscribers.length; j++) {
+                //         if (data[i].id == subscribers[j].id) {
+                //             hasCurrentElement = true;
+                //             break;
+                //         }
+                //     }
+                //     if (!hasCurrentElement) {
+                //         subscribers.push({
+                //             id: data[i].id,
+                //             first_name: data[i].first_name,
+                //             last_name: data[i].last_name,
+                //             middle_name: data[i].middle_name
+                //         });
+                //         hasCurrentElement = false;
+                //     }
+                // }
                 container.innerHTML = multipleChartViewTemplate({
                     subscribers: subscribers
                 });
@@ -109,17 +113,19 @@
 
                 var chartElements = document.querySelectorAll('.subscriber-chart');
                 var dataForChart = [];
-                for (i = 0; i < chartElements.length; i++) {
+                for (var i = 0; i < chartElements.length; i++) {
                     var chartId = chartElements[i].dataset.id;
-                    for (j = 0; j < data.length; j++) {
-                        if (data[j].id == chartId) {
-                            dataForChart.push(data[j]);
+                    for (var j = 0; j < breaks.length; j++) {
+                        if (breaks[j].subscriber_id == chartId) {
+                            dataForChart.push(breaks[j]);
                         }
                     }
+
                     // сформировал и можно создавать объекты
                     charts[i] = new BreaksChart();
                     charts[i].setData(dataForChart);
                     charts[i].run(chartElements[i].querySelector('canvas'));
+
                     dataForChart = [];
                 }
 

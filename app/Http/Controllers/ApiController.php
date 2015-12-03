@@ -27,7 +27,9 @@ class ApiController extends Controller {
             $subscriber = $request->input('subscriber');
             return response()->json(Schedule::getBreaksByIdAndDate($subscriber, $dayToShow));
         } else {
-            return response()->json(Schedule::getBreaksByDate($dayToShow));
+            $subscribers = Subscriber::all();
+            $breaks = Schedule::getBreaksByDate($dayToShow);
+            return response()->json(compact('breaks', 'subscribers'));
         }
     }
 

@@ -4,22 +4,43 @@
 
 @section('content')
 
-    <script id="chart-view" type="text/x-handlebars-template">
-        <div class="row">
-            <div class="chart">
-                <canvas id="chart-element" width="400" height="400"></canvas>
+
+    @if(Auth::user()->role == 'admin')
+        <script id="chart-view" type="text/x-handlebars-template">
+            <div class="row">
+                <div class="chart">
+                    <canvas id="chart-element" width="400" height="400"></canvas>
+                </div>
+                <div class="breaks-inputs">
+                    @{{#each data}}
+                        <div class="break" data-id="@{{this.id}}">
+                            <label class="break__label">Перерыв: </label>
+                            <input autocomplete="off" type="text" value="@{{formatTime this.start_date}}" class="break__input"> - <input autocomplete="off" value="@{{formatTime this.end_date}}" type="text" class="break__input">
+                            <a href="" class="break__save">Сохранить</a>
+                        </div>
+                    @{{/each}}
+                </div>
             </div>
-            <div class="breaks-inputs">
-                @{{#each data}}
-                    <div class="break" data-id="@{{this.id}}">
-                        <label class="break__label">Перерыв: </label>
-                        <input autocomplete="off" type="text" value="@{{formatTime this.start_date}}" class="break__input"> - <input autocomplete="off" value="@{{formatTime this.end_date}}" type="text" class="break__input">
-                        <a href="" class="break__save">Сохранить</a>
-                    </div>
-                @{{/each}}
+        </script>
+    @else
+        <script id="chart-view" type="text/x-handlebars-template">
+            <div class="row">
+                <div class="chart">
+                    <canvas id="chart-element" width="400" height="400"></canvas>
+                </div>
+                <div class="breaks-inputs">
+                    @{{#each data}}
+                        <div class="break" data-id="@{{this.id}}">
+                            <label class="break__label">Перерыв: </label>
+                            <input autocomplete="off" disabled type="text" value="@{{formatTime this.start_date}}" class="break__input"> - <input autocomplete="off" disabled value="@{{formatTime this.end_date}}" type="text" class="break__input">
+                        </div>
+                    @{{/each}}
+                </div>
             </div>
-        </div>
-    </script>
+        </script>
+    @endif
+
+
 
 
 

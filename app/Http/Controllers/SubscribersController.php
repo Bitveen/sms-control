@@ -42,6 +42,7 @@ class SubscribersController extends Controller {
      */
     public function create(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'firstName'   => 'required|min:3|max:255',
             'lastName'    => 'required|min:3|max:255',
@@ -74,8 +75,11 @@ class SubscribersController extends Controller {
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showForm()
+    public function showForm(Request $request)
     {
+        if ($request->user()->role == 'user') {
+            return redirect()->back();
+        }
         return view('subscribers.create');
     }
 
@@ -97,6 +101,10 @@ class SubscribersController extends Controller {
 
         for ($i = 0; $i < count($breaks); $i++) {
             $breaks[$i]->start_date = Carbon::parse($breaks[$i]->start_date);
+            if (!$breaks[$i]->end_date) {
+                $breaks[$i]->end_date = null;
+                continue;
+            }
             $breaks[$i]->end_date = Carbon::parse($breaks[$i]->end_date);
         }
 
